@@ -8,7 +8,7 @@ int noRemainder(const int maxDiv) {
         bool foundIt = true;
         
         for (int i = 1; i <= maxDiv; i++) {
-            std::div_t divResult = std::div(number,((maxDiv + 1) - i));     
+            std::div_t divResult = std::div(number,(maxDiv + 1) - i);     
             if (divResult.rem > 0) {
                 foundIt = false;    
             }
@@ -24,5 +24,5 @@ int noRemainder(const int maxDiv) {
 }
 
 int main() {
-    std::cout << "Solution: " << noRemainder(10);
+    std::cout << "Solution: " << noRemainder(20);
 }
