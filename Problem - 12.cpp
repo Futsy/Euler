@@ -20,7 +20,7 @@ int CountDiv(int number) {
 
 
 int main() {
-    const int neededDivs = 1000;
+    const int neededDivs = 500;
     int solution = 0;
     int triangleSum = 1;
      
