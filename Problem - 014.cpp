@@ -29,5 +29,4 @@ int main() {
     }
 
     std::cout << "Solution: " << solution;
-	std::cin.get();
 }
