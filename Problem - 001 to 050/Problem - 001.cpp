@@ -2,7 +2,7 @@
 
 template<int n> class SumMulti {
 public:
-    static const int limitCom = ((1000 - 1)/ n);
+    static const int limitCom = ((1000 - 1) / n);
     static const int value = n * (limitCom * (limitCom + 1)) / 2;
 };
  
