@@ -30,12 +30,13 @@ int main() {
 
     std::vector<int> composites;
     std::vector<int> primes;
-	primes.push_back(2);
-    primes.push_back(3);
-	primes.push_back(5);
-	primes.push_back(7);
-	std::vector<int> squares;
+    std::vector<int> squares;
     std::vector<int> result;
+
+    primes.push_back(2);
+    primes.push_back(3);
+    primes.push_back(5);
+    primes.push_back(7);
 
     //Obtain composites and primes under max
     for (int i = 10; i < max; i++) {
