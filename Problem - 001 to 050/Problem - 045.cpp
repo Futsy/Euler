@@ -15,7 +15,7 @@ int main() {
         solution = i * (2 * i - 1);
         i++;      
 		
-		if (Pentagon(solution)) {
+	if (Pentagon(solution)) {
             break;
         }
     }
