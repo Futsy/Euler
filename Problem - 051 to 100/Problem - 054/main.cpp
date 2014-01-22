@@ -5,10 +5,10 @@
 #include <tuple>
 #include <algorithm>
 
-#include "Card.h"
+#include "Solver.h"
 
-std::vector<std::vector<Card>> hands1;
-std::vector<std::vector<Card>> hands2;
+static std::vector<std::vector<Card>> hands1;
+static std::vector<std::vector<Card>> hands2;
 
 void ParseInput() {
 	std::ifstream t("input.txt");
@@ -54,16 +54,17 @@ int main() {
 	int solution = 0;
 
 	ParseInput();
+
 	for (int i = 0; i < hands1.size(); i++) {
 		std::vector<Card> hand1 = hands1[i];
 		std::vector<Card> hand2 = hands2[i];
-
-		//Loop through the possibilities here
+		
+		Solver s(hand1,hand2);
+		
+		if (s.Compute()) {
+			solution++;
+		}
 	}
-	
-
-	
-
 
 	std::cout << "Solution: " << solution << std::endl;
 	std::cin.get();
