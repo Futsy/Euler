@@ -41,7 +41,6 @@ int main() {
             }
         }
     }
-    std::cout << "Gets here2" << std::endl;
     
     std::string sumThis = "";
     for (const auto e : stories) {
@@ -50,7 +49,6 @@ int main() {
             break;
         }
     }
-    std::cout << "Gets here" << std::endl;
     for (const auto& e : sumThis) {
         solution += static_cast<int>(e);
     }
