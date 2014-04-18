@@ -1,15 +1,32 @@
 #ifndef LARGEINT_H
 #define LARGEINT_H
 
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <cstring>
-#include <ostream>
+
 #include <iomanip>
 #include <iostream>
-#include <type_traits>
+#include <ostream>
+#include <string>
+#include <vector>
+
+#if __cplusplus > 199711L
+#include <algorithm>
 #include <cmath>
+#include <cstring>
+#include <type_traits>
+#endif
+
+
+#ifdef _WIN32
+namespace patch {
+    template <typename T>
+    std::string to_string(T value)
+    {
+    	std::ostringstream os;
+    	os << value ;
+    	return os.str() ;
+    }    
+}
+#endif
 
 class LargeInt {
 public:
@@ -452,7 +469,11 @@ bool LargeInt::operator>=(const LargeInt& rhs) const {
 std::string LargeInt::toString() const {
     std::string str = "";
     for (const auto& e : number) {
+#ifndef _WIN32
         str += std::to_string(e);
+#elif
+        str += patch::to_string(e);
+#endif
     }
     return str;
 }
