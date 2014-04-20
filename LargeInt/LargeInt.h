@@ -1,7 +1,6 @@
 #ifndef LARGEINT_H
 #define LARGEINT_H
 
-
 #include <iomanip>
 #include <iostream>
 #include <ostream>
@@ -13,6 +12,14 @@
 #include <cmath>
 #include <cstring>
 #include <type_traits>
+#elif _MSC_VER > 1600
+#include <algorithm>
+#include <cmath>
+#include <cstring>
+#include <type_traits>
+#else
+#include <string.h>
+#include <math.h>
 #endif
 
 
@@ -312,7 +319,13 @@ LargeInt LargeInt::operator-(const LargeInt& rhs) const {
 LargeInt LargeInt::operator*(const LargeInt& rhs) const {
     const int nSize = number.size();
     const int rnSize = rhs.number.size();
+#if __cplusplus > 199711L
     const int baseDivisor = std::pow(10,9);
+#elif _MSC_VER > 1600
+    const int baseDivisor = std::pow(10,9);
+#else
+    const int baseDivisor = pow(10,9);
+#endif
 
     LargeInt result;
     result.number.resize(nSize + rnSize, 0);
@@ -586,11 +599,19 @@ void LargeInt::stringToLargeInt(const std::string &str) {
 
 template <typename T>
 void LargeInt::convertT(T t) {
+#if __cplusplus > 199711L
     static_assert(std::is_integral<T>() || std::is_floating_point<T>(), "Invalid argument for convertT");
+#endif
     sign = (t >= 0);
 
+#if __cplusplus > 199711L
     const int baseDivisor = std::pow(10,9);
-
+#elif _MSC_VER > 1600
+    const int baseDivisor = std::pow(10,9);
+#else
+    const int baseDivisor = pow(10,9);
+#endif
+    
     if (!sign) {
         t = -t;
     }
@@ -630,7 +651,13 @@ void LargeInt::remake(bool lead, bool vsign) {
 bool LargeInt::determineSize() {
     bool isPositive = true;
     int i = static_cast<int>((number.size())) - 1;
+#if __cplusplus > 199711L
     const int baseDivisor = std::pow(10,9);
+#elif _MSC_VER > 1600
+    const int baseDivisor = std::pow(10,9);
+#else
+    const int baseDivisor = pow(10,9);
+#endif
     const int max = 999999999;
 
     for (;i >= 0; --i) {
@@ -676,7 +703,13 @@ bool LargeInt::determineSize() {
 }
 
 void LargeInt::truncateToBase() {
+#if __cplusplus > 199711L
     const int baseDivisor = std::pow(10,9);
+#elif _MSC_VER > 1600
+    const int baseDivisor = std::pow(10,9);
+#else
+    const int baseDivisor = pow(10,9);
+#endif
 
     for (unsigned int i = 0; i < number.size(); ++i) {
         if (number[i] >= baseDivisor || number[i] <= -baseDivisor) {
