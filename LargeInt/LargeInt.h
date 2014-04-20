@@ -8,12 +8,7 @@
 #include <vector>
 #include <sstream>
 
-#if __cplusplus > 199711L
-#include <algorithm>
-#include <cmath>
-#include <cstring>
-#include <type_traits>
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
 #include <algorithm>
 #include <cmath>
 #include <cstring>
@@ -320,9 +315,7 @@ LargeInt LargeInt::operator-(const LargeInt& rhs) const {
 LargeInt LargeInt::operator*(const LargeInt& rhs) const {
     const int nSize = number.size();
     const int rnSize = rhs.number.size();
-#if __cplusplus > 199711L
-    const int baseDivisor = static_cast<int>(std::pow(10,9));
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
     const int baseDivisor = static_cast<int>(std::pow(10,9));
 #else
     const int baseDivisor = static_cast<int>(pow(10,9));
@@ -549,9 +542,7 @@ int LargeInt::findD(const LargeInt& R, const LargeInt& D) {
 }
 
 void LargeInt::digitIncrement(int factor, std::vector<int>& val) {
-#if __cplusplus > 199711L
-    const int baseDivisor = static_cast<int>(std::pow(10,9));
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
     const int baseDivisor = static_cast<int>(std::pow(10,9));
 #else
     const int baseDivisor = static_cast<int>(pow(10,9));
@@ -611,9 +602,7 @@ void LargeInt::convertT(T t) {
 #endif
     sign = (t >= 0);
 
-#if __cplusplus > 199711L
-    const int baseDivisor = static_cast<int>(std::pow(10,9));
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
     const int baseDivisor = static_cast<int>(std::pow(10,9));
 #else
     const int baseDivisor = static_cast<int>(pow(10,9));
@@ -658,9 +647,7 @@ void LargeInt::remake(bool lead, bool vsign) {
 bool LargeInt::determineSize() {
     bool isPositive = true;
     int i = static_cast<int>((number.size())) - 1;
-#if __cplusplus > 199711L
-    const int baseDivisor = static_cast<int>(std::pow(10,9));
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
     const int baseDivisor = static_cast<int>(std::pow(10,9));
 #else
     const int baseDivisor = static_cast<int>(pow(10,9));
@@ -710,9 +697,7 @@ bool LargeInt::determineSize() {
 }
 
 void LargeInt::truncateToBase() {
-#if __cplusplus > 199711L
-    const int baseDivisor = static_cast<int>(std::pow(10,9));
-#elif _MSC_VER > 1600
+#if (__cplusplus > 199711L || _MSC_VER > 1600)
     const int baseDivisor = static_cast<int>(std::pow(10,9));
 #else
     const int baseDivisor = static_cast<int>(pow(10,9));
