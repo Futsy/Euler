@@ -24,7 +24,10 @@ public:
             y = std::floor((y1 + N) / y2) * y2 - y1;
             if (static_cast<int>(x) == 3 && static_cast<int>(y) == 7)
                 return oldX;
-            x1 = x2, x2 = x, y1 = y2, y2 = y;
+            x1 = x2; 
+            x2 = x;
+            y1 = y2; 
+            y2 = y;
         }
         return -1;
     }
