@@ -1,45 +1,53 @@
+/**
+ * Run time solution
+ * 0.000007742 seconds
+ */
 #include <iostream>
+
  
 bool Palindrome(int num) {
     int reverseNumber = 0;
     int originalNumber = num;
     
-    if (num % 10 == 0) {
+    if (num % 2 == 0) {
         return false;
     }
  
     while (num >= 1) {
-        reverseNumber = (reverseNumber * 10) + (num % 10);
+        reverseNumber = reverseNumber * 10 + (num % 10);
         num = num / 10;
     }
  
-    return (originalNumber == reverseNumber);
-}
+    return originalNumber == reverseNumber;
+} 
  
-int main() {
+int main() {        
     int solution = 0;
-    int sum;
-    int first = 999;
-    int second = 999;
-    long int limit = 10000;
- 
-    while (limit > 0) {
-        first = 999;
-        limit--;
+    
+    for (int i = 999; i >= 900; --i) {
+        int count = 0;
+        int divider = 1; 
         
-        while (first > 900) {
-            second = 999;
-            
-            while (second >= first) {
-                sum = first * second;
-                second--;
-                
-                if (sum > solution && Palindrome(sum)) {
-                    solution = sum;
-                }       
+        if (i % 11 == 0) {
+            count = 999;
+        }
+        else {
+            count = 990;
+            divider = 11;
+        }
+        
+        while (count >= i) {
+            if (i * count <= solution) {
+                break;
             }
-            first--;
+            
+            if (Palindrome(i * count)) {
+                solution = i * count;
+            }
+            
+            count = count - divider;
         }
     }
     std::cout << "Solution: " << solution;
 }
+
