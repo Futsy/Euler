@@ -1,7 +1,10 @@
-#include <iostream>
+/**
+ * Compile-time solution
+ */
+ 
 
 constexpr unsigned int SumMulti(int n) {
-    return n * (((1000 - 1)/ n) * (((1000 - 1)/ n) + 1)) / 2;
+    return n * (999 / n * (999 / n + 1)) / 2;
 }
  
 int main() {
