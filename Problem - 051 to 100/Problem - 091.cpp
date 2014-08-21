@@ -16,9 +16,6 @@ unsigned Gcd(unsigned u, unsigned v) {
 }
 
 
-#include <chrono>
-#include <ctime>
-
 int main() {
     int solution = 0;
 
