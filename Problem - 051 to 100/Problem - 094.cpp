@@ -3,7 +3,6 @@
  */
 #include <iostream>
 #include <cmath>
-#include <type_traits>
 
 constexpr double sqrtThree = 1.73205080757;
 
