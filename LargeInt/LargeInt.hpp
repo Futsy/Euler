@@ -183,7 +183,7 @@ private:
 	friend std::ostream& operator<<(std::ostream &s, const LargeInt& n);
 	friend std::istream& operator>>(std::istream &s, LargeInt& n);
 
-#ifdef QT_CORE_LIBsss
+#ifdef QT_CORE_LIB
 public: // Qt specific code
 	explicit LargeInt(const QString& number);
 
@@ -209,9 +209,9 @@ public: // Qt specific code
 	bool operator>=(const QString& rhs) const;
 
 	QString toQString() const;
-	LargeInt power(const QString& pow) const;
+	void power(const QString& pow);
 
-	void convertString(const QString& str);
+	void qstringToLargeInt(const QString& str);
 #endif
 
 private:
@@ -1508,3 +1508,145 @@ std::ostream& operator<<(std::ostream& s, const LargeInt& n)
 	}
 	return s;
 }
+
+#ifdef QT_CORE_LIB
+// Qt specific code
+//\todo: comments
+LargeInt::LargeInt(const QString& number)
+{
+	qstringToLargeInt(number);
+}
+
+inline
+const LargeInt& LargeInt::operator=(const QString& number)
+{
+	qstringToLargeInt(number);
+	return *this;
+}
+
+inline
+const LargeInt& LargeInt::operator+=(const QString& rhs)
+{
+	*this += LargeInt(rhs);
+	return *this;
+}
+
+inline
+const LargeInt& LargeInt::operator-=(const QString& rhs)
+{
+	*this -= LargeInt(rhs);
+	return *this;
+}
+
+inline
+const LargeInt& LargeInt::operator*=(const QString& rhs)
+{
+	*this *= LargeInt(rhs);
+	return *this;
+}
+
+inline
+const LargeInt& LargeInt::operator/=(const QString& rhs)
+{
+	*this /= LargeInt(rhs);
+	return *this;
+}
+
+inline
+const LargeInt& LargeInt::operator%=(const QString& rhs)
+{
+	*this %= LargeInt(rhs);
+	return *this;
+}
+
+inline
+LargeInt LargeInt::operator+(const QString& rhs) const
+{
+	return *this + LargeInt(rhs);
+}
+
+inline
+LargeInt LargeInt::operator-(const QString& rhs) const
+{
+	return *this - LargeInt(rhs);
+}
+
+inline
+LargeInt LargeInt::operator*(const QString& rhs) const
+{
+	return *this * LargeInt(rhs);
+}
+
+inline
+LargeInt LargeInt::operator/(const QString& rhs) const
+{
+	return *this / LargeInt(rhs);
+}
+
+inline
+LargeInt LargeInt::operator%(const QString& rhs) const
+{
+	return *this % LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator==(const QString& rhs) const
+{
+	return *this == LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator!=(const QString& rhs) const
+{
+	return *this != LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator<(const QString& rhs) const
+{
+	return *this < LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator<=(const QString& rhs) const
+{
+	return *this <= LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator>(const QString& rhs) const
+{
+	return *this > LargeInt(rhs);
+}
+
+inline
+bool LargeInt::operator>=(const QString& rhs) const
+{
+	return *this >= LargeInt(rhs);
+}
+
+QString LargeInt::toQString() const
+{
+	QString str = "";
+	std::for_each(std::begin(number), std::end(number), [&](int e) { str += QString::number(e); });
+	return str;
+}
+
+void LargeInt::power(const QString& pow)
+{
+	auto num = LargeInt(pow);
+	if (num == LargeInt::zero) {
+		*this = LargeInt::one;
+		return;
+	}
+
+	for (int i = 0; i < num.toInteger(); i++)
+		*this *= *this;
+}
+
+
+void LargeInt::qstringToLargeInt(const QString& str)
+{
+	stringToLargeInt(str.toStdString());
+}
+#endif
