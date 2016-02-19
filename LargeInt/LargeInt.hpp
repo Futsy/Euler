@@ -1,26 +1,26 @@
 /**
- * The MIT License (MIT)
- * 
- * Copyright (c) 2016 Floris Velleman
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
+* The MIT License (MIT)
+*
+* Copyright (c) 2016 Floris Velleman
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*/
 #pragma once
 
 #include <iomanip>
@@ -47,7 +47,7 @@ class LargeInt
 
 public: // Constructors
 	explicit LargeInt();
-	
+
 	explicit LargeInt(int number);
 	explicit LargeInt(double number);
 	explicit LargeInt(const std::string& number);
@@ -69,49 +69,49 @@ public: // Operators +-*/%
 	const LargeInt& operator+=(double rhs);
 	const LargeInt& operator+=(const std::string& rhs);
 	const LargeInt& operator+=(const LargeInt& rhs);
-	
+
 	const LargeInt& operator-=(int rhs);
 	const LargeInt& operator-=(double rhs);
 	const LargeInt& operator-=(const std::string& rhs);
 	const LargeInt& operator-=(const LargeInt& rhs);
-	
+
 	const LargeInt& operator*=(int rhs);
 	const LargeInt& operator*=(double rhs);
 	const LargeInt& operator*=(const std::string& rhs);
 	const LargeInt& operator*=(const LargeInt& rhs);
-	
+
 	const LargeInt& operator/=(int rhs);
 	const LargeInt& operator/=(double rhs);
 	const LargeInt& operator/=(const std::string& rhs);
 	const LargeInt& operator/=(const LargeInt& rhs);
-	
+
 	const LargeInt& operator%=(int rhs);
 	const LargeInt& operator%=(double rhs);
 	const LargeInt& operator%=(const std::string& rhs);
 	const LargeInt& operator%=(const LargeInt& rhs);
 
 	LargeInt operator-() const;
-	
+
 	LargeInt operator+(int rhs) const;
 	LargeInt operator+(double rhs) const;
 	LargeInt operator+(const std::string& rhs) const;
 	LargeInt operator+(const LargeInt& rhs) const;
-	
+
 	LargeInt operator-(int rhs) const;
 	LargeInt operator-(double rhs) const;
 	LargeInt operator-(const std::string& rhs) const;
 	LargeInt operator-(const LargeInt& rhs) const;
-	
+
 	LargeInt operator*(int rhs) const;
 	LargeInt operator*(double rhs) const;
 	LargeInt operator*(const std::string& rhs) const;
 	LargeInt operator*(const LargeInt& rhs) const;
-	
+
 	LargeInt operator/(int rhs) const;
 	LargeInt operator/(double rhs) const;
 	LargeInt operator/(const std::string& rhs) const;
 	LargeInt operator/(const LargeInt& rhs) const;
-	
+
 	LargeInt operator%(int rhs) const;
 	LargeInt operator%(double rhs) const;
 	LargeInt operator%(const std::string& rhs) const;
@@ -122,12 +122,12 @@ public: // Logical operators
 	bool operator==(double rhs) const;
 	bool operator==(const std::string& rhs) const;
 	bool operator==(const LargeInt& rhs) const;
-	
+
 	bool operator!=(int rhs) const;
 	bool operator!=(double rhs) const;
 	bool operator!=(const std::string& rhs) const;
 	bool operator!=(const LargeInt& rhs) const;
-	
+
 	bool operator<(int rhs) const;
 	bool operator<(double rhs) const;
 	bool operator<(const std::string& rhs) const;
@@ -159,7 +159,7 @@ public:	// Mathematical functions
 	void power(double pow);
 	void power(const std::string& pow);
 	void power(const LargeInt& pow);
-	
+
 public: // Interface hard coded values
 	static const LargeInt zero;
 	static const LargeInt one;
@@ -221,83 +221,83 @@ private:
 };
 
 /**
- * Initialize the static variables
- */
+* Initialize the static variables
+*/
 const LargeInt LargeInt::zero = LargeInt(0);
 const LargeInt LargeInt::one = LargeInt(1);
 const LargeInt LargeInt::two = LargeInt(2);
 
 /**
- * Default constructor that adds a 0.
- */
-LargeInt::LargeInt() : sign(true) 
+* Default constructor that adds a 0.
+*/
+LargeInt::LargeInt() : sign(true)
 {
 	number.push_back(0);
 }
 
 /**
- * Sets the number as the LargeInt value
- */
+* Sets the number as the LargeInt value
+*/
 LargeInt::LargeInt(int number)
 {
 	convertNumber<int>(number);
 }
 
 /**
- * Sets the number as the LargeInt value
- * rounds the double and casts to int
- */
+* Sets the number as the LargeInt value
+* rounds the double and casts to int
+*/
 LargeInt::LargeInt(double number)
 {
 	convertNumber<int>(std::round(number));
 }
 
 /**
- * Turns an std::string into a LargeInt
- * will give LargeInt(0) on any parse error
- */
-LargeInt::LargeInt(const std::string& number) 
+* Turns an std::string into a LargeInt
+* will give LargeInt(0) on any parse error
+*/
+LargeInt::LargeInt(const std::string& number)
 {
 	stringToLargeInt(number);
 }
 
 /**
- * Turns the number into a LargeInt and returns itself
- */
+* Turns the number into a LargeInt and returns itself
+*/
 inline
-const LargeInt& LargeInt::operator=(int number) 
+const LargeInt& LargeInt::operator=(int number)
 {
 	convertNumber<int>(number);
 	return *this;
 }
 
 /**
- * Turns the number into a LargeInt and returns itself
- * rounds the double and casts to int
- */
+* Turns the number into a LargeInt and returns itself
+* rounds the double and casts to int
+*/
 inline
-const LargeInt& LargeInt::operator=(double number) 
+const LargeInt& LargeInt::operator=(double number)
 {
 	convertNumber<int>(std::round(number));
 	return *this;
 }
 
 /**
- * Turns the std::string into a LargeInt and returns itself
- * will give LargeInt(0) on any parse error
- */
+* Turns the std::string into a LargeInt and returns itself
+* will give LargeInt(0) on any parse error
+*/
 inline
-const LargeInt& LargeInt::operator=(const std::string& str) 
+const LargeInt& LargeInt::operator=(const std::string& str)
 {
 	stringToLargeInt(str);
 	return *this;
 }
 
 /**
- * Post-increments the number by 1
- */
+* Post-increments the number by 1
+*/
 inline
-const LargeInt& LargeInt::operator++() 
+const LargeInt& LargeInt::operator++()
 {
 	number[0] += (sign ? 1 : -1);
 	remake(false, true);
@@ -305,10 +305,10 @@ const LargeInt& LargeInt::operator++()
 }
 
 /**
- * Post-decrements the number by 1
- */
+* Post-decrements the number by 1
+*/
 inline
-const LargeInt& LargeInt::operator--() 
+const LargeInt& LargeInt::operator--()
 {
 	number[0] -= (sign ? 1 : -1);
 	remake(false, true);
@@ -316,10 +316,10 @@ const LargeInt& LargeInt::operator--()
 }
 
 /**
- * Pre-increments the number by 1
- */
+* Pre-increments the number by 1
+*/
 inline
-LargeInt LargeInt::operator++(int) 
+LargeInt LargeInt::operator++(int)
 {
 	LargeInt result = *this;
 	number[0] += (sign ? 1 : -1);
@@ -328,10 +328,10 @@ LargeInt LargeInt::operator++(int)
 }
 
 /**
- * Pre-decrements the number by 1
- */
+* Pre-decrements the number by 1
+*/
 inline
-LargeInt LargeInt::operator--(int) 
+LargeInt LargeInt::operator--(int)
 {
 	LargeInt result = *this;
 	number[0] -= (sign ? 1 : -1);
@@ -340,45 +340,45 @@ LargeInt LargeInt::operator--(int)
 }
 
 /**
- * Increments the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Increments the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
-const LargeInt& LargeInt::operator+=(int rhs) 
+const LargeInt& LargeInt::operator+=(int rhs)
 {
 	*this += LargeInt(rhs);
 	return *this;
 }
 
 /**
- * Increments the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Increments the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
-const LargeInt& LargeInt::operator+=(double rhs) 
+const LargeInt& LargeInt::operator+=(double rhs)
 {
 	*this += LargeInt(rhs);
 	return *this;
 }
 
 /**
- * Increments the LargeInt by the rhs std::string
- * if parsing fails will increment by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Increments the LargeInt by the rhs std::string
+* if parsing fails will increment by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
-const LargeInt& LargeInt::operator+=(const std::string& rhs) 
+const LargeInt& LargeInt::operator+=(const std::string& rhs)
 {
 	*this += LargeInt(rhs);
 	return *this;
 }
 
 /**
- * Increments the LargeInt by using division
- * returns the result of adding the two
- */
-const LargeInt& LargeInt::operator+=(const LargeInt& rhs) 
+* Increments the LargeInt by using division
+* returns the result of adding the two
+*/
+const LargeInt& LargeInt::operator+=(const LargeInt& rhs)
 {
 	const int nSize = number.size();
 	const int rnSize = rhs.number.size();
@@ -386,9 +386,9 @@ const LargeInt& LargeInt::operator+=(const LargeInt& rhs)
 	// Small optimization
 	if (rnSize > nSize)
 		number.resize(rnSize, 0);
-	
+
 	for (int i = 0; i < nSize; ++i) {
-		const int rem = (i < rnSize ? 
+		const int rem = (i < rnSize ?
 			(rhs.sign ? rhs.number[i] : -rhs.number[i]) : 0);
 		const int sig = (sign ? number[i] : -number[i]);
 		number[i] = sig + rem;
@@ -398,9 +398,9 @@ const LargeInt& LargeInt::operator+=(const LargeInt& rhs)
 }
 
 /**
- * Decrements the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator-=(int rhs)
 {
@@ -409,10 +409,10 @@ const LargeInt& LargeInt::operator-=(int rhs)
 }
 
 /**
- * Decrements the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator-=(double rhs)
 {
@@ -421,10 +421,10 @@ const LargeInt& LargeInt::operator-=(double rhs)
 }
 
 /**
- * Decrements the LargeInt by the rhs std::string
- * if parsing fails will decrement by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs std::string
+* if parsing fails will decrement by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator-=(const std::string& rhs)
 {
@@ -433,9 +433,9 @@ const LargeInt& LargeInt::operator-=(const std::string& rhs)
 }
 
 /**
- * Decrements the LargeInt by using division
- */
-const LargeInt& LargeInt::operator-=(const LargeInt& rhs) 
+* Decrements the LargeInt by using division
+*/
+const LargeInt& LargeInt::operator-=(const LargeInt& rhs)
 {
 	const int nSize = number.size();
 	const int rnSize = rhs.number.size();
@@ -444,7 +444,7 @@ const LargeInt& LargeInt::operator-=(const LargeInt& rhs)
 		number.resize(rnSize, 0);
 	}
 	for (int i = 0; i < nSize; ++i) {
-		const int rem = (i < rnSize ? 
+		const int rem = (i < rnSize ?
 			(rhs.sign ? rhs.number[i] : -rhs.number[i]) : 0);
 		const int seg = (sign ? number[i] : -number[i]);
 		number[i] = seg - rem;
@@ -454,9 +454,9 @@ const LargeInt& LargeInt::operator-=(const LargeInt& rhs)
 }
 
 /**
- * Multiplies the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Multiplies the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator*=(int rhs)
 {
@@ -465,10 +465,10 @@ const LargeInt& LargeInt::operator*=(int rhs)
 }
 
 /**
- * Multiplies the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Multiplies the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator*=(double rhs)
 {
@@ -477,10 +477,10 @@ const LargeInt& LargeInt::operator*=(double rhs)
 }
 
 /**
- * Decrements the LargeInt by the rhs std::string
- * if parsing fails will multiply by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs std::string
+* if parsing fails will multiply by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator*=(const std::string& rhs)
 {
@@ -489,23 +489,23 @@ const LargeInt& LargeInt::operator*=(const std::string& rhs)
 }
 
 /**
- * Multiplies the LargeInt by using the digit increment
- */
-const LargeInt& LargeInt::operator*=(const LargeInt& rhs) 
+* Multiplies the LargeInt by using the digit increment
+*/
+const LargeInt& LargeInt::operator*=(const LargeInt& rhs)
 {
 	int factor = rhs < LargeInt::zero ? (-rhs).toInteger() : rhs.toInteger();
 	bool oSign = sign;
 	digitIncrement(factor, number);
 	remake();
-	sign = (number.size() == 1 && number[0] == 0) ? 
+	sign = (number.size() == 1 && number[0] == 0) ?
 		true : (oSign == (rhs >= 0));
 	return *this;
 }
 
 /**
- * Divides the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator/=(int rhs)
 {
@@ -514,10 +514,10 @@ const LargeInt& LargeInt::operator/=(int rhs)
 }
 
 /**
- * Divides the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator/=(double rhs)
 {
@@ -526,12 +526,12 @@ const LargeInt& LargeInt::operator/=(double rhs)
 }
 
 /**
- * Divides the LargeInt by the rhs std::string
- * if parsing fails will not divide.
- * if dividing by zero will return the number and 
- * log an error to cerr.
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs std::string
+* if parsing fails will not divide.
+* if dividing by zero will return the number and
+* log an error to cerr.
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator/=(const std::string& rhs)
 {
@@ -540,10 +540,10 @@ const LargeInt& LargeInt::operator/=(const std::string& rhs)
 }
 
 /**
- * Divides the LargeInt 
- * \todo: might need a small speedup
- */
-const LargeInt& LargeInt::operator/=(const LargeInt& rhs) 
+* Divides the LargeInt
+* \todo: might need a small speedup
+*/
+const LargeInt& LargeInt::operator/=(const LargeInt& rhs)
 {
 	if (rhs == zero) {
 		std::cerr << "Division by zero!" << std::endl;
@@ -567,16 +567,16 @@ const LargeInt& LargeInt::operator/=(const LargeInt& rhs)
 		number[i] += cnt;
 	}
 	remake();
-	sign = (number.size() == 1 && number[0] == 0) ? 
+	sign = (number.size() == 1 && number[0] == 0) ?
 		true : (oSign == rhs.sign);
 	return *this;
 }
 
 /**
- * Divides the LargeInt by the rhs int 
- * and returns the remainder
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs int
+* and returns the remainder
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator%=(int rhs)
 {
@@ -585,11 +585,11 @@ const LargeInt& LargeInt::operator%=(int rhs)
 }
 
 /**
- * Divides the LargeInt by the rhs double 
- * and returns the remainder
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs double
+* and returns the remainder
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator%=(double rhs)
 {
@@ -598,13 +598,13 @@ const LargeInt& LargeInt::operator%=(double rhs)
 }
 
 /**
- * Divides the LargeInt by the rhs std::string 
- * and returns the remainder
- * if parsing fails will not divide.
- * if dividing by zero will return the number 
- * and log an error to cerr.
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs std::string
+* and returns the remainder
+* if parsing fails will not divide.
+* if dividing by zero will return the number
+* and log an error to cerr.
+* \todo: this is a bit lazy
+*/
 inline
 const LargeInt& LargeInt::operator%=(const std::string& rhs)
 {
@@ -613,11 +613,11 @@ const LargeInt& LargeInt::operator%=(const std::string& rhs)
 }
 
 /**
- * Divides the LargeInt by the rhs LargeInt
- * and returns the remainder.
- * \todo: might need a small speedup 
- */
-const LargeInt& LargeInt::operator%=(const LargeInt& rhs) 
+* Divides the LargeInt by the rhs LargeInt
+* and returns the remainder.
+* \todo: might need a small speedup
+*/
+const LargeInt& LargeInt::operator%=(const LargeInt& rhs)
 {
 	if (rhs == zero) {
 		std::cerr << "Division by zero!" << std::endl;
@@ -642,9 +642,9 @@ const LargeInt& LargeInt::operator%=(const LargeInt& rhs)
 }
 
 /**
- * This is for prefixing -, which flips the sign
- */
-LargeInt LargeInt::operator-() const 
+* This is for prefixing -, which flips the sign
+*/
+LargeInt LargeInt::operator-() const
 {
 	LargeInt result = *this;
 	result.sign = !sign;
@@ -652,9 +652,9 @@ LargeInt LargeInt::operator-() const
 }
 
 /**
- * Adds the LargeInt to the rhs int
- * \todo: this is a bit lazy
- */
+* Adds the LargeInt to the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator+(int rhs) const
 {
@@ -662,10 +662,10 @@ LargeInt LargeInt::operator+(int rhs) const
 }
 
 /**
- * Adds the LargeInt to the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Adds the LargeInt to the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator+(double rhs) const
 {
@@ -673,10 +673,10 @@ LargeInt LargeInt::operator+(double rhs) const
 }
 
 /**
- * Adds the LargeInt to the rhs std::string
- * if parsing fails will increment by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Adds the LargeInt to the rhs std::string
+* if parsing fails will increment by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator+(const std::string& rhs) const
 {
@@ -684,10 +684,10 @@ LargeInt LargeInt::operator+(const std::string& rhs) const
 }
 
 /**
- * Adds the LargeInt to the rhs LargeInt
- * resizes to largest and adds.
- */
-LargeInt LargeInt::operator+(const LargeInt& rhs) const 
+* Adds the LargeInt to the rhs LargeInt
+* resizes to largest and adds.
+*/
+LargeInt LargeInt::operator+(const LargeInt& rhs) const
 {
 	const auto nSize = number.size();
 	const auto rnSize = rhs.number.size();
@@ -695,9 +695,9 @@ LargeInt LargeInt::operator+(const LargeInt& rhs) const
 
 	result.number.resize(nSize > rnSize ? nSize : rnSize, 0);
 	for (unsigned int i = 0; i < nSize || i < rnSize; ++i) {
-		result.number[i] = (i < nSize ? 
-			(sign ? number[i] : -number[i]) : 0) 
-			+ (i < rnSize ? 
+		result.number[i] = (i < nSize ?
+			(sign ? number[i] : -number[i]) : 0)
+			+ (i < rnSize ?
 			(rhs.sign ? rhs.number[i] : -rhs.number[i]) : 0);
 	}
 	result.remake();
@@ -705,9 +705,9 @@ LargeInt LargeInt::operator+(const LargeInt& rhs) const
 }
 
 /**
- * Decrements the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator-(int rhs) const
 {
@@ -715,10 +715,10 @@ LargeInt LargeInt::operator-(int rhs) const
 }
 
 /**
- * Decrements the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator-(double rhs) const
 {
@@ -726,10 +726,10 @@ LargeInt LargeInt::operator-(double rhs) const
 }
 
 /**
- * Decrements the LargeInt by the rhs std::string
- * if parsing fails will increment by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Decrements the LargeInt by the rhs std::string
+* if parsing fails will increment by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator-(const std::string& rhs) const
 {
@@ -737,10 +737,10 @@ LargeInt LargeInt::operator-(const std::string& rhs) const
 }
 
 /**
- * Decrements the LargeInt by the rhs LargeInt
- * resizes to largest and decrements.
- */
-LargeInt LargeInt::operator-(const LargeInt& rhs) const 
+* Decrements the LargeInt by the rhs LargeInt
+* resizes to largest and decrements.
+*/
+LargeInt LargeInt::operator-(const LargeInt& rhs) const
 {
 	const auto nSize = number.size();
 	const auto rnSize = rhs.number.size();
@@ -748,8 +748,8 @@ LargeInt LargeInt::operator-(const LargeInt& rhs) const
 
 	result.number.resize(nSize > rnSize ? nSize : rnSize, 0);
 	for (unsigned int i = 0; i < nSize || i < rnSize; ++i) {
-		result.number[i] = (i < nSize ? 
-			(sign ? number[i] : -number[i]) : 0) 
+		result.number[i] = (i < nSize ?
+			(sign ? number[i] : -number[i]) : 0)
 			- (i < rnSize ?
 			(rhs.sign ? rhs.number[i] : -rhs.number[i]) : 0);
 	}
@@ -758,9 +758,9 @@ LargeInt LargeInt::operator-(const LargeInt& rhs) const
 }
 
 /**
- * Multiplies the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Multiplies the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator*(int rhs) const
 {
@@ -768,10 +768,10 @@ LargeInt LargeInt::operator*(int rhs) const
 }
 
 /**
- * Multiplies the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Multiplies the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator*(double rhs) const
 {
@@ -779,10 +779,10 @@ LargeInt LargeInt::operator*(double rhs) const
 }
 
 /**
- * Multiplies the LargeInt by the rhs std::string
- * if parsing fails will increment by LargeInt(0).
- * \todo: this is a bit lazy
- */
+* Multiplies the LargeInt by the rhs std::string
+* if parsing fails will increment by LargeInt(0).
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator*(const std::string& rhs) const
 {
@@ -790,10 +790,10 @@ LargeInt LargeInt::operator*(const std::string& rhs) const
 }
 
 /**
- * Multiplies the LargeInt by the rhs LargeInt
- * \todo: This does not win a beauty contest, but it is pretty fast.
- */
-LargeInt LargeInt::operator*(const LargeInt& rhs) const 
+* Multiplies the LargeInt by the rhs LargeInt
+* \todo: This does not win a beauty contest, but it is pretty fast.
+*/
+LargeInt LargeInt::operator*(const LargeInt& rhs) const
 {
 	const int nSize = number.size();
 	const int rnSize = rhs.number.size();
@@ -811,7 +811,7 @@ LargeInt LargeInt::operator*(const LargeInt& rhs) const
 
 		bool found = false;
 		for (int i = digit < rnSize ? 0 : digit - rnSize + 1; i < nSize && i <= digit; ++i) {
-			long long pval = result.number[digit] + number[i] 
+			long long pval = result.number[digit] + number[i]
 				* static_cast<long long>(rhs.number[digit - i]);
 
 			if (pval >= baseDivisor || pval <= -baseDivisor) {
@@ -836,9 +836,9 @@ LargeInt LargeInt::operator*(const LargeInt& rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator/(int rhs) const
 {
@@ -846,10 +846,10 @@ LargeInt LargeInt::operator/(int rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs double
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs double
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator/(double rhs) const
 {
@@ -857,12 +857,12 @@ LargeInt LargeInt::operator/(double rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs std::string
- * if parsing fails will not divide.
- * if dividing by zero will return the number and
- * log an error to cerr.
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs std::string
+* if parsing fails will not divide.
+* if dividing by zero will return the number and
+* log an error to cerr.
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator/(const std::string& rhs) const
 {
@@ -870,10 +870,10 @@ LargeInt LargeInt::operator/(const std::string& rhs) const
 }
 
 /**
- * Divides the LargeInt
- * \todo: might need a small speedup
- */
-LargeInt LargeInt::operator/(const LargeInt& rhs) const 
+* Divides the LargeInt
+* \todo: might need a small speedup
+*/
+LargeInt LargeInt::operator/(const LargeInt& rhs) const
 {
 	if (rhs == zero) {
 		std::cerr << "Division by zero!" << std::endl;
@@ -899,10 +899,10 @@ LargeInt LargeInt::operator/(const LargeInt& rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs int
- * and returns the remainder
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs int
+* and returns the remainder
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator%(int rhs) const
 {
@@ -910,11 +910,11 @@ LargeInt LargeInt::operator%(int rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs double
- * and returns the remainder
- * rounds the double and casts to int
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs double
+* and returns the remainder
+* rounds the double and casts to int
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator%(double rhs) const
 {
@@ -922,13 +922,13 @@ LargeInt LargeInt::operator%(double rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs std::string
- * and returns the remainder
- * if parsing fails will not divide.
- * if dividing by zero will return the number
- * and log an error to cerr.
- * \todo: this is a bit lazy
- */
+* Divides the LargeInt by the rhs std::string
+* and returns the remainder
+* if parsing fails will not divide.
+* if dividing by zero will return the number
+* and log an error to cerr.
+* \todo: this is a bit lazy
+*/
 inline
 LargeInt LargeInt::operator%(const std::string& rhs) const
 {
@@ -936,11 +936,11 @@ LargeInt LargeInt::operator%(const std::string& rhs) const
 }
 
 /**
- * Divides the LargeInt by the rhs LargeInt
- * and returns the remainder.
- * \todo: might need a small speedup
- */
-LargeInt LargeInt::operator%(const LargeInt& rhs) const 
+* Divides the LargeInt by the rhs LargeInt
+* and returns the remainder.
+* \todo: might need a small speedup
+*/
+LargeInt LargeInt::operator%(const LargeInt& rhs) const
 {
 	if (rhs == zero) {
 		std::cerr << "Division by zero!" << std::endl;
@@ -963,102 +963,102 @@ LargeInt LargeInt::operator%(const LargeInt& rhs) const
 }
 
 /**
- * Logical
- */
+* Logical
+*/
 inline
-bool LargeInt::operator==(int rhs) const 
+bool LargeInt::operator==(int rhs) const
 {
 	return *this == LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator==(double rhs) const 
+bool LargeInt::operator==(double rhs) const
 {
 	return *this == LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator==(const std::string& rhs) const 
+bool LargeInt::operator==(const std::string& rhs) const
 {
 	return *this == LargeInt(rhs);
 }
 
-bool LargeInt::operator==(const LargeInt& rhs) const 
+bool LargeInt::operator==(const LargeInt& rhs) const
 {
 	const int nSize = number.size();
 	const int rnSize = rhs.number.size();
 
-	if (sign != rhs.sign || nSize != rnSize) 
+	if (sign != rhs.sign || nSize != rnSize)
 		return false;
-	
+
 	for (int i = nSize - 1; i >= 0; --i) {
-		if (number[i] != rhs.number[i]) 
+		if (number[i] != rhs.number[i])
 			return false;
 	}
 	return true;
 }
 
 inline
-bool LargeInt::operator!=(int rhs) const 
+bool LargeInt::operator!=(int rhs) const
 {
 	return *this != LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator!=(double rhs) const 
+bool LargeInt::operator!=(double rhs) const
 {
 	return *this != LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator!=(const std::string& rhs) const 
+bool LargeInt::operator!=(const std::string& rhs) const
 {
 	return *this != LargeInt(rhs);
 }
 
 inline
-bool LargeInt::operator!=(const LargeInt& rhs) const 
+bool LargeInt::operator!=(const LargeInt& rhs) const
 {
 	return !(*this == rhs);
 }
 
 inline
-bool LargeInt::operator<(int rhs) const 
+bool LargeInt::operator<(int rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator<(double rhs) const 
+bool LargeInt::operator<(double rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator<(const std::string& rhs) const 
+bool LargeInt::operator<(const std::string& rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
-bool LargeInt::operator<(const LargeInt& rhs) const 
+bool LargeInt::operator<(const LargeInt& rhs) const
 {
 	const int nSize = number.size();
 	const int rnSize = rhs.number.size();
@@ -1071,7 +1071,7 @@ bool LargeInt::operator<(const LargeInt& rhs) const
 		return !sign;
 	if (nSize < rnSize)
 		return sign;
-	
+
 	for (int i = nSize - 1; i >= 0; --i) {
 		if (number[i] < rhs.number[i])
 			return sign;
@@ -1082,96 +1082,96 @@ bool LargeInt::operator<(const LargeInt& rhs) const
 }
 
 inline
-bool LargeInt::operator<=(int rhs) const 
+bool LargeInt::operator<=(int rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator<=(double rhs) const 
+bool LargeInt::operator<=(double rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator<=(const std::string& rhs) const 
+bool LargeInt::operator<=(const std::string& rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
-bool LargeInt::operator<=(const LargeInt& rhs) const 
+bool LargeInt::operator<=(const LargeInt& rhs) const
 {
 	return (*this < rhs);
 }
 
 inline
-bool LargeInt::operator>(int rhs) const 
+bool LargeInt::operator>(int rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator>(double rhs) const 
+bool LargeInt::operator>(double rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator>(const std::string& rhs) const 
+bool LargeInt::operator>(const std::string& rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
-bool LargeInt::operator>(const LargeInt& rhs) const 
+bool LargeInt::operator>(const LargeInt& rhs) const
 {
 	return !(*this < rhs);
 }
 
 inline
-bool LargeInt::operator>=(int rhs) const 
+bool LargeInt::operator>=(int rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * rounds the double and casts to int
- */
+* rounds the double and casts to int
+*/
 inline
-bool LargeInt::operator>=(double rhs) const 
+bool LargeInt::operator>=(double rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
 /**
- * if parsing fails will compare with LargeInt(0)
- */
+* if parsing fails will compare with LargeInt(0)
+*/
 inline
-bool LargeInt::operator>=(const std::string& rhs) const 
+bool LargeInt::operator>=(const std::string& rhs) const
 {
 	return *this < LargeInt(rhs);
 }
 
-bool LargeInt::operator>=(const LargeInt& rhs) const 
+bool LargeInt::operator>=(const LargeInt& rhs) const
 {
 	return !(*this < rhs);
 }
 
 /**
- * Turns the LargeInt into an std::string
- */
-std::string LargeInt::toStdString() const 
+* Turns the LargeInt into an std::string
+*/
+std::string LargeInt::toStdString() const
 {
 	std::string str = "";
 	std::for_each(std::begin(number), std::end(number), [&](int e) { str += std::to_string(e); });
@@ -1179,10 +1179,10 @@ std::string LargeInt::toStdString() const
 }
 
 /**
- * Turns the LargeInt into an int
- * returns 0 if std::stoi throws
- */
-int LargeInt::toInteger() const 
+* Turns the LargeInt into an int
+* returns 0 if std::stoi throws
+*/
+int LargeInt::toInteger() const
 {
 	std::string str = "";
 	std::for_each(std::begin(number), std::end(number), [&](int e) { str += std::to_string(e); });
@@ -1195,10 +1195,10 @@ int LargeInt::toInteger() const
 }
 
 /**
- * Turns the LargeInt into a double
- * returns 0 if std::stod throws
- */
-double LargeInt::toDouble() const 
+* Turns the LargeInt into a double
+* returns 0 if std::stod throws
+*/
+double LargeInt::toDouble() const
 {
 	std::string str = "";
 	std::for_each(std::begin(number), std::end(number), [&](int e) { str += std::to_string(e); });
@@ -1211,10 +1211,10 @@ double LargeInt::toDouble() const
 }
 
 /**
- * Turns the LargeInt into a float
- * returns 0 if std::stof throws
- */
-float LargeInt::toFloat() const 
+* Turns the LargeInt into a float
+* returns 0 if std::stof throws
+*/
+float LargeInt::toFloat() const
 {
 	std::string str = "";
 	std::for_each(std::begin(number), std::end(number), [&](int e) { str += std::to_string(e); });
@@ -1227,29 +1227,29 @@ float LargeInt::toFloat() const
 }
 
 /**
- * Transforms into this^pow
- */
-void LargeInt::power(int pow) 
+* Transforms into this^pow
+*/
+void LargeInt::power(int pow)
 {
-	for (int i = 0; i < pow; i++) 
+	for (int i = 0; i < pow; i++)
 		*this *= *this;
 }
 
 /**
- * Transforms into this^pow
- * Rounds the double and casts it to an int
- */
-void LargeInt::power(double pow) 
+* Transforms into this^pow
+* Rounds the double and casts it to an int
+*/
+void LargeInt::power(double pow)
 {
-	for (int i = 0; i < std::round(pow); i++) 
+	for (int i = 0; i < std::round(pow); i++)
 		*this *= *this;
 }
 
 /**
- * Transforms into this^pow
- * if parsing fails will compare will return this
- */
-void LargeInt::power(const std::string& pow) 
+* Transforms into this^pow
+* if parsing fails will compare will return this
+*/
+void LargeInt::power(const std::string& pow)
 {
 	auto num = LargeInt(pow);
 	if (num == LargeInt::zero) {
@@ -1257,23 +1257,23 @@ void LargeInt::power(const std::string& pow)
 		return;
 	}
 
-	for (int i = 0; i < num.toInteger(); i++) 
+	for (int i = 0; i < num.toInteger(); i++)
 		*this *= *this;
 }
 
 /**
- * Transforms into this^pow
- */
-void LargeInt::power(const LargeInt& pow) 
+* Transforms into this^pow
+*/
+void LargeInt::power(const LargeInt& pow)
 {
-	for (int i = 0; i < pow.toInteger(); i++) 
+	for (int i = 0; i < pow.toInteger(); i++)
 		*this *= *this;
 }
 
 /**
- * Find D utility function
- */
-int LargeInt::findD(const LargeInt& R, const LargeInt& D) 
+* Find D utility function
+*/
+int LargeInt::findD(const LargeInt& R, const LargeInt& D)
 {
 	int min = 0;
 	int max = 999999999;
@@ -1300,9 +1300,9 @@ int LargeInt::findD(const LargeInt& R, const LargeInt& D)
 }
 
 /**
- * Used for multiplication
- */
-void LargeInt::digitIncrement(int factor, std::vector<int>& val) 
+* Used for multiplication
+*/
+void LargeInt::digitIncrement(int factor, std::vector<int>& val)
 {
 	const int baseDivisor = static_cast<int>(std::pow(10, 9));
 
@@ -1320,17 +1320,24 @@ void LargeInt::digitIncrement(int factor, std::vector<int>& val)
 		}
 		val[i] = static_cast<int>(pval);
 	}
-	if (carry > 0) 
+	if (carry > 0)
 		val.push_back(carry);
 }
 
 /**
  * Transforms a string to a LargeInteger
- * will return 0 if it has the wrong format
+ * Object will become 0 if it has the wrong format
+ * Object will become 0 if it is empty
+ * Object will become the first row of digits ("-1234abc5678" -> -1234)
  */
 void LargeInt::stringToLargeInt(const std::string &str) {
 	sign = true;
 	number.clear();
+
+	if (str.empty()) {
+		number.push_back(0);
+		return;
+	}
 
 	number.reserve(str.size() / 9 + 1);
 	int i = static_cast<int>(str.size()) - 9;
@@ -1342,7 +1349,8 @@ void LargeInt::stringToLargeInt(const std::string &str) {
 		std::string strs = str.substr(0, i + 9);
 
 		if (strs.size() == 1 && strs[0] == '-') {
-			sign = false;
+			number = { 0 };
+			return;
 		}
 		else {
 			int val;
@@ -1350,7 +1358,7 @@ void LargeInt::stringToLargeInt(const std::string &str) {
 				val = std::stoi(strs);
 			}
 			catch (...) {
-				number.clear();
+				number = { 0 };
 				sign = true;
 				return;
 			}
@@ -1365,9 +1373,9 @@ void LargeInt::stringToLargeInt(const std::string &str) {
 }
 
 /**
- * Changes a number into a LargeInt
- * also sets the sign
- */
+* Changes a number into a LargeInt
+* also sets the sign
+*/
 template <typename T>
 void LargeInt::convertNumber(T t) {
 	sign = (t >= 0);
@@ -1385,8 +1393,8 @@ void LargeInt::convertNumber(T t) {
 }
 
 /**
- * Rebuilds the LargeInt because digits fall out of: 0 < x < 9
- */
+* Rebuilds the LargeInt because digits fall out of: 0 < x < 9
+*/
 void LargeInt::remake(bool lead, bool vsign) {
 	if (!lead) {
 		truncateToBase();
@@ -1396,7 +1404,7 @@ void LargeInt::remake(bool lead, bool vsign) {
 		}
 		else {
 			sign = vsign ? !sign : false;
-			for (unsigned int i = 0; i < number.size(); ++i) 
+			for (unsigned int i = 0; i < number.size(); ++i)
 				number[i] = std::abs(number[i]);
 		}
 	}
