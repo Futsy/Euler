@@ -1436,14 +1436,16 @@ bool LargeInt::determineSize() {
 			if (number[i] < 0) {
 				int k = 0, index = i + 1;
 
-				for (; static_cast<size_t>(index) < number.size() && number[index] == 0; ++k, ++index); {
-					number[index] -= 1;
-					number[i] += baseDivisor;
+				for (; static_cast<size_t>(index) < number.size() && number[index] == 0; ++k, ++index)
+				; 
+				
+				number[index] -= 1;
+				number[i] += baseDivisor;
 
-					for (; k > 0; --k) {
-						number[i + k] = max;
-					}
+				for (; k > 0; --k) {
+					number[i + k] = max;
 				}
+				
 			}
 		}
 	}
@@ -1451,13 +1453,14 @@ bool LargeInt::determineSize() {
 		for (; i >= 0; --i) {
 			if (number[i] > 0) {
 				int k = 0, index = i + 1;
-				for (; static_cast<size_t>(index) < number.size() && number[index] == 0; ++k, ++index); {
-					number[index] += 1;
-					number[i] -= baseDivisor;
+				for (; static_cast<size_t>(index) < number.size() && number[index] == 0; ++k, ++index)
+				; 
+				
+				number[index] += 1;
+				number[i] -= baseDivisor;
 
-					for (; k > 0; --k) {
-						number[i + k] = -max;
-					}
+				for (; k > 0; --k) {
+					number[i + k] = -max;
 				}
 			}
 		}
