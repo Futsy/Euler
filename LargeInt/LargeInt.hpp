@@ -50,7 +50,7 @@ public: // Constructors
 
 	explicit LargeInt(int number);
 	explicit LargeInt(double number);
-	explicit LargeInt(const std::string& number);
+	LargeInt(const std::string& number);
 	// Default copy/move is fine for LargeInt
 
 public: // Assignment and Unary
