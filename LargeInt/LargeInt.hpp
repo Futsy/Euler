@@ -1328,7 +1328,7 @@ void LargeInt::digitIncrement(int factor, std::vector<int>& val)
  * Transforms a string to a LargeInteger
  * Object will become 0 if it has the wrong format
  * Object will become 0 if it is empty
- * Object will become the first row of digits ("-1234abc5678" -> -1234)
+ * Object will become 0 if it contains non numbers: ("abc123" -> 0)
  */
 void LargeInt::stringToLargeInt(const std::string &str) {
 	sign = true;
@@ -1342,8 +1342,15 @@ void LargeInt::stringToLargeInt(const std::string &str) {
 	number.reserve(str.size() / 9 + 1);
 	int i = static_cast<int>(str.size()) - 9;
 
-	for (; i >= 0; i -= 9)
-		number.push_back(std::stoi(str.substr(i, 9)));
+	try {
+		for (; i >= 0; i -= 9)
+			number.push_back(std::stoi(str.substr(i, 9)));
+	}
+	catch (...) {
+		number = { 0 };
+		sign = true;
+		return;
+	}
 
 	if (i > -9) {
 		std::string strs = str.substr(0, i + 9);
